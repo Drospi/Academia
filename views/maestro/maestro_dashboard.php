@@ -15,6 +15,8 @@ if(!isset($_SESSION["rol"])){
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
     <link href="/dist/output.css" rel="stylesheet">
 </head>
 
@@ -39,7 +41,7 @@ if(!isset($_SESSION["rol"])){
             <button type="button" class="relative flex rounded-full items-center text-sm gap-4" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Open user menu</span>
-              <span>Usuario</span>
+              <span><?php echo $_SESSION['id'] ?></span>
               <img class='h-12 w-12 rounded-full' src='../src/img/maestro.jpg'/>
             </button>
           </div>
@@ -61,7 +63,7 @@ if(!isset($_SESSION["rol"])){
   </div>
 
 </nav>
-    <aside id="sidebar" class="bg-gray-700 absolute top-0 left-0 h-screen text-gray-300 w-1/4 transition-all -translate-x-full duration-300 ease-in-out transform ">
+    <aside id="sidebar" class="z-50 bg-gray-700 absolute top-0 left-0 h-screen text-gray-300 w-1/4 transition-all -translate-x-full duration-300 ease-in-out transform ">
     <div class="p-4">
     <button onclick="cerrarSidebar()" type="button" class="relative flex mb-8 rounded-full items-center text-sm gap-4" >
     <img class='h-12 w-12 rounded-full' src='../src/img/logo.jpg'/>
@@ -77,14 +79,12 @@ if(!isset($_SESSION["rol"])){
                 <h3 class="uppercase text-center my-4">Menu Alumnos</h3>
                 <ul>
                     <li class="mb-2">
-                        <a href="#" class="flex gap-2 items-center">
-                        <i class="fas fa-graduation-cap"></i>  Ver Calificaciones
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="flex items-center">
-                        <i class="fas fa-graduation-cap"></i>  Administra tus Clases
-                        </a>
+                      <form action="/maestro/alumnos" method="post">
+                        <input type="text" hidden name="id" value="<?php echo $_SESSION['id'] ?>">
+                        <button onclick="mostrarSeccion('alumnos')" type="submit" class="flex gap-2 items-center">
+                        <i class="fas fa-graduation-cap"></i> Alumnos
+                        </button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -96,6 +96,12 @@ if(!isset($_SESSION["rol"])){
             <h2>Bienvenido</h2>
             <p>Selecciona la accion que quieras realizar presionando el logo de la izquierda y escogiendo las vistas del sidebar</p>
         </div>
+    </section>
+    <section onclick="cerrarSidebar()" id="alumnos" class="bg-gray-100 hidden w-full h-full">
+    <?php
+        
+          include $_SERVER["DOCUMENT_ROOT"] . "/views/maestro/maestro_alumnos.php";
+        ?>
     </section>
 
     <script>
@@ -113,7 +119,25 @@ if(!isset($_SESSION["rol"])){
             document.getElementById('dropmenu').classList.add('nactive-dropmenu')
 
         }
+        if(sessionStorage.getItem('seccion')){
+            mostrarSeccion(sessionStorage.getItem('seccion'))
+        }
+        function mostrarSeccion(seccion){
+            sessionStorage.setItem('seccion', seccion);
+            const secciones = document.querySelectorAll('section')
+            secciones.forEach((sec)=>sec.classList.add('hidden'))
+            document.getElementById(seccion).classList.remove('hidden');
+            cerrarSidebar();
+        }
     </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
     <script src="https://kit.fontawesome.com/ae7acbd10e.js" crossorigin="anonymous"></script>
 </body>
 

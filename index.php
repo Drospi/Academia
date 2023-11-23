@@ -9,7 +9,7 @@ require_once "./controllers/MaestroController.php";
 $loginController = new LoginController();
 $logoutController = new LogoutController();
 $adminController = new AdminController();
-// $maestroController = new MaestroController();
+$maestroController = new MaestroController();
 // $alumnoController = new AlumnoController();
 
 $route = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
@@ -28,6 +28,9 @@ if ($method === "POST") {
             $adminController->editPermisos($_POST);
             break;
 
+        case '/maestro':
+            $maestroController->dashboard();
+            break;
         case '/maestros':
             $adminController->dashboardMaestros();
             break;
@@ -55,6 +58,11 @@ if ($method === "POST") {
         case '/clases/create':
             $adminController->createClases($_POST);
             break;
+        case '/maestro/alumnos':
+            $maestroController->dashboardAlumnos();
+            break;
+        case '/calificaciones/edit':
+            $maestroController->editCalificaciones($_POST);
         default:
             echo "NO ENCONTRAMOS LA RUTA.";
             break;
@@ -74,7 +82,9 @@ if ($method === "GET") {
         case '/admin':
             $adminController->dashboard();
             break;
-
+        case '/maestro':
+            $maestroController->dashboard();
+            break;
         case '/admin/maestros':
             $adminController->dashboardMaestros();
             break;
@@ -83,6 +93,9 @@ if ($method === "GET") {
             break;
         case '/admin/clases':
             $adminController->dashboardClases();
+        case '/maestro/calificaciones':
+            $maestroController->dashboard();
+            break;
 
 
         default:

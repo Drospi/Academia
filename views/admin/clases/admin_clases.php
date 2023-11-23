@@ -15,7 +15,11 @@
         </thead>
         <tbody>
 
-            <?php foreach ($materias as $materia) {  ?>
+            <?php
+            $arrayDisplayed = [];
+             foreach ($materias as $materia) {  
+                if(!in_array($materia['id_materia'],$arrayDisplayed)){
+                    $arrayDisplayed[]=$materia['id_materia']?>
                 <tr>
                     <td class='py-2 px-4 border-b'><?php echo $materia['id'] ?></td>
                     <td class='py-2 px-4 border-b'><?php echo $materia['materia'] ?></td>
@@ -26,12 +30,12 @@
                         }
                         echo $maestros;
                      ?>
-                    <td class='py-2 px-4 border-b'><?php echo $materia['name'] ?></td>
                     <?php 
                     $alumnosInscritos="<td class='py-2 px-4 bg-yellow-500 border-b'>Sin Alumnos</td>";
                     foreach($inscritos as $inscrito){
                         if($inscrito['id'] == $materia['id_materia']){
                             $alumnosInscritos = "<td class='py-2 px-4 border-b'>".$inscrito['alumnos_inscritos']."</td>" ;
+                            break;
                         }
                     }
                         echo $alumnosInscritos;
@@ -40,7 +44,7 @@
                         <button id="clase<?php echo $materia['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php } }?>
 
         </tbody>
     </table>

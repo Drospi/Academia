@@ -26,6 +26,7 @@
                     <div class="mb-4">
                         <label for="rol">Maestro Asignado</label>
                         <select class="w-full cursor-pointer appearance-none border border-gray-300 p-2 rounded leading-tight focus:outline-none focus:border-blue-500" name="maestro" id="maestro">
+                        <option value=NULL >Sin Asignar</option>
                             <?php
                             foreach ($usuarios as $usuario) {
                                 $selected = ($usuario['id'] == $materia['id_usuario']) ? 'selected' : '';

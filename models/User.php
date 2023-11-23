@@ -43,5 +43,12 @@ class User
         return $data;
         
     }
+    public function id($correo){
+        $r = $this->db->query("SELECT id FROM usuarios WHERE email='$correo' ");
+        $data = $r->fetch_assoc();
+
+        return $data;
+        
+    }
 
 }

@@ -24,7 +24,7 @@ class LoginController
         $rol = $this->model->rol($data['email']);
         $password = $this->model->password($data['email']);
         $nombre = $this->model->name($data['email']);
-        var_dump($nombre);
+        $id = $this->model->id($data['email']);
         session_start();
         if (password_verify($data['password'], $password['password'])) {
             if($rol['rol']==1){
@@ -33,7 +33,8 @@ class LoginController
                 header("Location: ".$url);
             }else if($rol['rol']==2){
                 $_SESSION['rol']='maestro';
-                include $_SERVER["DOCUMENT_ROOT"] . "/views/maestro/maestro_dashboard.php";
+                $_SESSION['id']=$id['id'];
+                header("Location: /maestro");
             }else if($rol['rol']==3){
                 $_SESSION['rol']='alumno';
                 include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/alumno_dashboard.php";
