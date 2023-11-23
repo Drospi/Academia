@@ -19,6 +19,13 @@
                 <tr>
                     <td class='py-2 px-4 border-b'><?php echo $materia['id'] ?></td>
                     <td class='py-2 px-4 border-b'><?php echo $materia['materia'] ?></td>
+                    <?php 
+                    $maestros = "<td class='py-2 px-4 border-b'>".$materia['name']."</td>" ;
+                    if($materia['name'] == NULL){
+                            $maestros="<td class='py-2 px-4 bg-yellow-500 border-b'>Sin Asignacion</td>";
+                        }
+                        echo $maestros;
+                     ?>
                     <td class='py-2 px-4 border-b'><?php echo $materia['name'] ?></td>
                     <?php 
                     $alumnosInscritos="<td class='py-2 px-4 bg-yellow-500 border-b'>Sin Alumnos</td>";

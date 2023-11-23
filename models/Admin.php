@@ -42,11 +42,12 @@ class Admin{
         return $data;
     }
     public function clases(){
-        $res = $this->db->query("SELECT clases.id_materia, clases.id_usuario,clases.id_clases, materias.id, materias.materia,usuarios.name
-                FROM materias
-                INNER JOIN clases ON materias.id = clases.id_materia
-                inner join usuarios on usuarios.id = clases.id_usuario where usuarios.rol =2
-                GROUP by clases.id_materia, clases.id_usuario, clases.id_clases, materias.materia, usuarios.name;
+        $res = $this->db->query("SELECT clases.id_materia, clases.id_usuario, clases.id_clases, materias.id, materias.materia, usuarios.name
+        FROM clases
+        INNER JOIN materias ON materias.id = clases.id_materia
+        LEFT JOIN usuarios ON usuarios.id = clases.id_usuario AND usuarios.rol = 2
+        GROUP BY clases.id_materia, clases.id_usuario, clases.id_clases, materias.id, materias.materia, usuarios.name;
+        
         ");
         $data = $res->fetch_all(MYSQLI_ASSOC);
         return $data;
