@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-login{
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+}
+.bg-image-login{
+    background-image: url(../src/img/1.jpg);
+    background-position: 50%;
+    background-size: cover;
+}
+@keyframes entrar{
+    0%{
+        transform: scale(95%);
+        opacity: 0%;
+    }
+    100%{
+        transform: scale(100%);
+        opacity: 100%;
+    }
+}
+@keyframes salir{
+    0%{
+        transform: scale(100%);
+        opacity: 100%;
+    }
+    100%{
+        transform: scale(95%);
+        opacity: 0%;
+    }
+}
+#dropmenu{
+    animation: entrar 1s ease;
+}
+.nactive-dropmenu{
+    animation: salir 1s ease;
+    display: none;
+}
