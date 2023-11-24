@@ -26,7 +26,7 @@ class Maestro{
 
     }
     public function all($id_materia){
-        $res = $this->db->query("SELECT * 
+        $res = $this->db->query("SELECT *
         FROM usuarios
         inner join clases on usuarios.id = clases.id_usuario
         INNER JOIN materias ON materias.id = clases.id_materia
@@ -49,11 +49,11 @@ class Maestro{
         $id = $data['id'];
         try{
         if($data['id']==NULL){
-            $this->db->query("INSERT into calificaciones (calificacion,id_usuario, mensajes) VALUES ($calificacion, '$mensaje',$id_usuario)");
-            echo"se inserto";
+            $this->db->query("INSERT into calificaciones (calificacion,id_usuario, mensajes) VALUES ($calificacion, $id_usuario,'$mensaje')");
+            echo 'se ins';
         }else{
             $this->db->query("UPDATE calificaciones set calificacion = $calificacion, mensajes = '$mensaje', id_usuario= $id_usuario WHERE id=$id");
-            echo"se actualizo";
+            echo 'se act';
         }
     }catch (mysqli_sql_exception $e) {
         // En caso de error, revertir la transacción

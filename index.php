@@ -83,7 +83,7 @@ if ($method === "GET") {
             $adminController->dashboard();
             break;
         case '/maestro':
-            $maestroController->dashboard();
+            $maestroController->dashboardAlumnos();
             break;
         case '/admin/maestros':
             $adminController->dashboardMaestros();

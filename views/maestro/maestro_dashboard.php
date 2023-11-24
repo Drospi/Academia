@@ -41,7 +41,7 @@ if(!isset($_SESSION["rol"])){
             <button type="button" class="relative flex rounded-full items-center text-sm gap-4" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Open user menu</span>
-              <span><?php echo $_SESSION['id'] ?></span>
+              <span><?php echo $_SESSION['nombre'] ?></span>
               <img class='h-12 w-12 rounded-full' src='../src/img/maestro.jpg'/>
             </button>
           </div>
@@ -72,7 +72,7 @@ if(!isset($_SESSION["rol"])){
     <hr class="bg-gray-100" style="padding: 0.1px; width:auto;">
             <div class="my-4">
                 <h2 class="text-xl">Maestro</h2>
-                <p class="text-md text-gray-300">nombre de maestro</p>
+                <p class="text-md text-gray-300"><?php echo $_SESSION['nombre'] ?></p>
             </div>
     <hr class="bg-gray-100" style="padding: 0.1px; width:auto;">
             <nav>

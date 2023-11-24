@@ -14,7 +14,7 @@ class LoginController
     }
     public function index()
     {
-        $contra= 'rio';
+        $contra= 'alumno';
         $hash = password_hash($contra, PASSWORD_DEFAULT);
         var_dump($hash);
         include $_SERVER["DOCUMENT_ROOT"] . "/views/login.php";
@@ -25,6 +25,7 @@ class LoginController
         $password = $this->model->password($data['email']);
         $nombre = $this->model->name($data['email']);
         $id = $this->model->id($data['email']);
+        $materia = $this->model->materia($id['id']);
         session_start();
         if (password_verify($data['password'], $password['password'])) {
             if($rol['rol']==1){
@@ -34,6 +35,9 @@ class LoginController
             }else if($rol['rol']==2){
                 $_SESSION['rol']='maestro';
                 $_SESSION['id']=$id['id'];
+                $_SESSION['nombre']=$nombre['name'];
+                $_SESSION['materia']=$materia['materia'];
+                $_SESSION['id_materia']=$materia['id'];
                 header("Location: /maestro");
             }else if($rol['rol']==3){
                 $_SESSION['rol']='alumno';

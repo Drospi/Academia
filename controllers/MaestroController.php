@@ -14,10 +14,8 @@ class MaestroController{
     }
     public function dashboardAlumnos(){
         session_start();
-        
         $nombre= $_GET['name'];
-        $id_materia = $this->model->idMateria($_SESSION['id']);
-        $usuarios = $this->model->all($id_materia);
+        $usuarios = $this->model->all($_SESSION['id_materia']);
         $calificaciones = $this->model->calificaciones();
         include $_SERVER["DOCUMENT_ROOT"] . "/views/maestro/maestro_dashboard.php";
     }
