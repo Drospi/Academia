@@ -41,7 +41,7 @@ if(!isset($_SESSION["rol"])){
             <button type="button" class="relative flex rounded-full items-center text-sm gap-4" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Open user menu</span>
-              <span>Usuario</span>
+              <span><?php echo $_SESSION['nombre'] ?></span>
               <img class='h-12 w-12 rounded-full' src='../src/img/estudiante.jpg'/>
             </button>
           </div>
@@ -63,7 +63,7 @@ if(!isset($_SESSION["rol"])){
   </div>
 
 </nav>
-    <aside id="sidebar" class="bg-gray-700 absolute top-0 left-0 h-screen text-gray-300 w-1/4 transition-all -translate-x-full duration-300 ease-in-out transform ">
+    <aside id="sidebar" class="z-50 bg-gray-700 absolute top-0 left-0 h-screen text-gray-300 w-1/4 transition-all -translate-x-full duration-300 ease-in-out transform ">
     <div class="p-4">
     <button onclick="cerrarSidebar()" type="button" class="relative flex mb-8 rounded-full items-center text-sm gap-4" >
     <img class='h-12 w-12 rounded-full' src='../src/img/logo.jpg'/>
@@ -71,23 +71,23 @@ if(!isset($_SESSION["rol"])){
     </button>
     <hr class="bg-gray-100" style="padding: 0.1px; width:auto;">
             <div class="my-4">
-                <h2 class="text-xl">Maestro</h2>
-                <p class="text-md text-gray-300">nombre de maestro</p>
+                <h2 class="text-xl">ALUMNO</h2>
+                <p class="text-md text-gray-300"><?php echo $_SESSION['nombre']?></p>
             </div>
     <hr class="bg-gray-100" style="padding: 0.1px; width:auto;">
             <nav>
                 <h3 class="uppercase text-center my-4">Menu Alumnos</h3>
                 <ul>
                     <li class="mb-2">
-                      <form action="/" method="get">
-                        <button href="#" class="flex gap-2 items-center">
+                      <form action="/alumno/calificaciones" method="post">
+                        <button onclick="mostrarSeccion('calificaciones');" type="submit" class="flex gap-2 items-center">
                         <i class="fas fa-graduation-cap"></i>  Ver Calificaciones
                         </button>
                         </form>
                     </li>
                     <li class="mb-2">
-                      <form action="/" method="get">
-                        <button href="#" class="flex items-center">
+                      <form action="/alumno/clases" method="post">
+                        <button onclick="mostrarSeccion('clases_alumnos')" type="submit" class="flex items-center">
                         <i class="fas fa-graduation-cap"></i>  Administra tus Clases
                         </button>
                         </form>
@@ -103,13 +103,13 @@ if(!isset($_SESSION["rol"])){
             <p>Selecciona la accion que quieras realizar presionando el logo de la izquierda y escogiendo las vistas del sidebar</p>
         </div>
     </section>
-    <section onclick="cerrarSidebar()" class="bg-gray-100 w-full h-full">
+    <section onclick="cerrarSidebar()" id="calificaciones" class="bg-gray-100 hidden w-full h-full">
     <?php
         
-          include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/alumno_calificaciones.php";
+          include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/calificaciones/alumno_calificaciones.php";
         ?>
     </section>
-    <section onclick="cerrarSidebar()" class="bg-gray-100 w-full h-full">
+    <section onclick="cerrarSidebar()" id="clases_alumnos" class="bg-gray-100 hidden w-full h-full">
     <?php
         
           include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/clases/alumno_clases.php";
@@ -142,7 +142,7 @@ if(!isset($_SESSION["rol"])){
             cerrarSidebar();
         }
     </script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
@@ -153,4 +153,4 @@ if(!isset($_SESSION["rol"])){
     <script src="https://kit.fontawesome.com/ae7acbd10e.js" crossorigin="anonymous"></script>
 </body>
 
-</html>s
+</html>

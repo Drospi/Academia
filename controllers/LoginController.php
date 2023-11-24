@@ -43,7 +43,7 @@ class LoginController
                 $_SESSION['rol']='alumno';
                 $_SESSION['nombre'] = $nombre['name'];
                 $_SESSION['id'] = $id['id'];
-                include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/alumno_dashboard.php";
+                header('Location: /alumno');
             }
 
         } else {

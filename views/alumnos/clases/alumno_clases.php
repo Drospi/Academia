@@ -1,57 +1,84 @@
-<h1 class="text-2xl py-4 ml-4">Lista de Alumnos de la Materia de <?php echo $_SESSION['materia'] ?></h1>
+<h1 class="text-2xl py-4 ml-4">Esquema de clases del estudiante <?php echo $_SESSION['nombre'] ?></h1>
 
 <div class="w-auto mx-12">
-<table id="maestro_alumnos_table" class="mt-6 w-full border border-gray-300">
+<table id="clases_table" class="mt-6 w-full border border-gray-300">
     <thead>
         <tr class="bg-gray-200">
             <th class="py-2 px-4 border-b">#</th>
-            <th class="py-2 px-4 border-b">Nombre</th>
-            <th class="py-2 px-4 border-b">Calificacion</th>
-            <th class="py-2 px-4 border-b">Mensajes</th>
-            <th class="py-2 px-4 border-b">Acciones</th>
+            <th class="py-2 px-4 border-b">Materias</th>
+            <th class="py-2 px-4 border-b">Darse de baja</th>
         </tr>
     </thead>
 <tbody>
 
-<?php foreach($usuarios as $usuario){  ?>
-    <tr>
-    <td class='py-2 px-4 border-b'><?php echo $usuario['id'] ?></td>
-    <td class='py-2 px-4 border-b'><?php echo $usuario['name'] ?></td>
-
-        <?php
-        $cal = ' ';
-         foreach($calificaciones as $calificacion){
-            if($calificacion['id_usuario']==$usuario['id_usuario']){
-                $cal = $calificacion['calificacion'];
-            }
-        } ?>
-        <td class='py-2 px-4 border-b'><?php echo $cal?></td>
-        <?php
-        $mess = "<td class='py-2 bg-cyan-400 px-4 border-b'>Sin Asignar</td>";
-        foreach($calificaciones as $calificacion){
-           if($calificacion['id_usuario']==$usuario['id_usuario']){
-               $mess = "<td class='py-2 px-4 border-b'>".$calificacion['mensajes']."</td>";
-           }
-       } 
-       echo $mess;
-        ?>
+    <?php foreach($clasesInscritas as $claseI){  ?>
+        <tr>
+            <td class='py-2 px-4 border-b'><?php echo $claseI['id_materia'] ?></td>
+            <td class='py-2 px-4 border-b'><?php echo $claseI['materia'] ?></td>            
+            <td class="py-2 px-4 border-b">
+                <form action="/baja" method="post">
+                    <input type="number" hidden value="<?php echo $_SESSION['id'] ?>" name="id_usuario">
+                    <input type="number" hidden value="<?php echo $claseI['id_materia'] ?>" name="id_materia">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    <?php } ?>
         
-        <td class="py-2 px-4 border-b">
-        <button id="alumno<?php echo $usuario['id_usuario']?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
-        </td>
-    </tr>
-
-    <?php }?>
-</tbody>
+    </tbody>
 </table>
 
+<div  class="mx-auto p-6 bg-white shadow-md rounded-lg w-72">
+<h2 class="text-2xl font-bold mb-4">Título del Container</h2>
+<?php if(count($clasesNoInscritas)==0){
+    echo "<p>Estas inscrito en todas las clases.</p>";
+}else{ ?>
+  <p>Aquí puedes agregar contenido adicional si lo necesitas.</p>
+  
+  <form action="/inscribirse" method="post">
+      <div class="border border-gray-300 rounded-md p-3">
+      <?php foreach($clasesNoInscritas as $claseN){  ?>
+          <label for="<?php echo $claseN['id']?>" class="opcion-label border-b border-gray-300 w-73">
+              <input hidden type="checkbox" id="<?php echo $claseN['id']?>" name="opciones[]" data-id="<?php echo $claseN['id']?>" value="<?php echo $claseN['id']?>" class="opcion-input">
+              <?php echo $claseN['materia'] ?>
+          </label><br>
+          <?php }?>
+          <input type="number" hidden value="<?php echo $_SESSION['id'] ?>" name="id_usuario">
+      <!-- Agrega más checkboxes según sea necesario -->
+    </div>
+  
+      <button class="bg-blue-500 hover:bg-blue-700 text-white rounded p-4" type="submit" value="Enviar">Enviar</button>
+  </form>
+  <?php } ?>
 </div>
-<?php include $_SERVER["DOCUMENT_ROOT"] . "/views/maestro/maestro_calificacion.php";?>
 
+<script>
+  const checkboxes = document.querySelectorAll('.opcion-input');
+  
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+          const id = this.getAttribute('data-id');
+          const label = this.parentElement;
+          
+    if (this.checked) {
+        label.classList.add('bg-blue-500')
+        label.classList.add('text-white')
+      // Acción cuando el checkbox está marcado
+    } else {
+      label.classList.remove('bg-blue-500')
+      label.classList.remove('text-white')
+      // Acción cuando el checkbox está desmarcado
+    }
+  });
+});
+</script>
+
+    
+</div>
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-        let table = new DataTable('#maestro_alumnos_table',{
+        let table = new DataTable('#clases_table',{
             responsive: 'true',
             dom: 'Bfrtilp',
             buttons:[

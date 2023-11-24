@@ -63,6 +63,19 @@ if ($method === "POST") {
             break;
         case '/calificaciones/edit':
             $maestroController->editCalificaciones($_POST);
+            break;
+        case '/alumno/calificaciones':
+            $alumnoController->dashboardCalificaciones();
+            break;
+        case '/alumno/clases':
+            $alumnoController->dashboardClases();
+            break;
+        case '/inscribirse':
+            $alumnoController->inscribir($_POST);
+            break;
+        case '/baja':
+            $alumnoController->baja($_POST);
+            break;
         default:
             echo "NO ENCONTRAMOS LA RUTA.";
             break;
@@ -74,11 +87,9 @@ if ($method === "GET") {
         case '/index.php':
             $loginController->index();
             break;
-
         case '/logout':
             $logoutController->logout();
             break;
-
         case '/admin':
             $adminController->dashboard();
             break;
@@ -86,6 +97,9 @@ if ($method === "GET") {
             $maestroController->dashboardAlumnos();
             break;
         case '/alumno':
+            $alumnoController->dashboard();
+            break;
+        case '/alumno/calificaciones':
             $alumnoController->dashboard();
             break;
         case '/admin/maestros':
@@ -96,6 +110,7 @@ if ($method === "GET") {
             break;
         case '/admin/clases':
             $adminController->dashboardClases();
+            break;
         case '/maestro/calificaciones':
             $maestroController->dashboard();
             break;
