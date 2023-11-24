@@ -10,7 +10,7 @@ $loginController = new LoginController();
 $logoutController = new LogoutController();
 $adminController = new AdminController();
 $maestroController = new MaestroController();
-// $alumnoController = new AlumnoController();
+$alumnoController = new AlumnoController();
 
 $route = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $method = $_SERVER["REQUEST_METHOD"];
@@ -84,6 +84,9 @@ if ($method === "GET") {
             break;
         case '/maestro':
             $maestroController->dashboardAlumnos();
+            break;
+        case '/alumno':
+            $alumnoController->dashboard();
             break;
         case '/admin/maestros':
             $adminController->dashboardMaestros();

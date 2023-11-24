@@ -41,6 +41,8 @@ class LoginController
                 header("Location: /maestro");
             }else if($rol['rol']==3){
                 $_SESSION['rol']='alumno';
+                $_SESSION['nombre'] = $nombre['name'];
+                $_SESSION['id'] = $id['id'];
                 include $_SERVER["DOCUMENT_ROOT"] . "/views/alumnos/alumno_dashboard.php";
             }
 
