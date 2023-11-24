@@ -37,23 +37,28 @@ class Maestro{
     return $data;
     }
     public function calificaciones(){
-        $res =$this->db->query("SELECT * from calificaciones");
+        session_start();
+        $id_maestro = $_SESSION['id'];
+        $id_materia = $_SESSION['id_materia'];
+        $res =$this->db->query("SELECT * from calificaciones 
+        where id_maestro =$id_maestro and id_materia =$id_materia");
         $data = $res->fetch_all(MYSQLI_ASSOC);
         return $data;
     }
     public function editCalificaciones($data)
     {
+        session_start();
+        $id_materia = $_SESSION['id_materia'];
+        $id_maestro = $_SESSION['id'];
         $mensaje = $data['mensaje'];
         $calificacion = $data['calificacion'];
         $id_usuario = $data['id_usuario'];
-        $id = $data['id'];
+        $idCalificacion = $data['id_calificacion'];
         try{
-        if($data['id']==NULL){
-            $this->db->query("INSERT into calificaciones (calificacion,id_usuario, mensajes) VALUES ($calificacion, $id_usuario,'$mensaje')");
-            echo 'se ins';
+        if($data['id_prince']==0){
+            $this->db->query("INSERT into calificaciones (calificacion,id_usuario, mensajes, id_materia,id_maestro) VALUES ($calificacion, $id_usuario,'$mensaje',$id_materia,$id_maestro)");
         }else{
-            $this->db->query("UPDATE calificaciones set calificacion = $calificacion, mensajes = '$mensaje', id_usuario= $id_usuario WHERE id=$id");
-            echo 'se act';
+            $this->db->query("UPDATE calificaciones set calificacion = $calificacion, mensajes = '$mensaje', id_usuario= $id_usuario WHERE id=$idCalificacion");
         }
     }catch (mysqli_sql_exception $e) {
         // En caso de error, revertir la transacción

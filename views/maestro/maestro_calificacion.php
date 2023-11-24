@@ -17,7 +17,7 @@
                 <form action="/calificaciones/edit" id="maestros_form" method="post">
                     <?php
         $cal = ' ';
-        $id = NULL;
+        $id = 0;
          foreach($calificaciones as $calificacion){
             if($calificacion['id_usuario']==$usuario['id_usuario']){
                 $cal = $calificacion['calificacion'];
@@ -49,8 +49,9 @@
                         </div>
                     </div>
                     <input type="text" hidden name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
-                    <input type="text" hidden name="id" value="<?php echo $id ?>">
+                    <input type="text" hidden name="id_prince" value="<?php echo $id ?>">
                     <input type="text" hidden name="id" value="<?php echo $usuarios['name']?>">
+                    <input type="text" hidden name="id_calificacion" value="<?php echo $calificacion['id'] ?>">
                     <div class="mb-4 text-end">
                         <button class="closeModal bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition-colors duration-300">Close</button>
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Guardar Cambios</button>
