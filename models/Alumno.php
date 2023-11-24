@@ -71,6 +71,7 @@ class Alumno{
         $id_usuario = $data['id_usuario'];
         $id_materia = $data['id_materia'];
         $this->db->query("DELETE from clases where id_usuario=$id_usuario and id_materia=$id_materia ");
+        $this->db->query("DELETE from calificaciones where id_usuario=$id_usuario and id_materia=$id_materia");
     }
 }
 ?>

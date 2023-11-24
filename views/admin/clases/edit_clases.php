@@ -6,7 +6,7 @@
             <div class="modal-content py-4 text-left px-6">
                 <!-- Título del modal -->
                 <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold">Editar Clase</p>
+                    <p class="text-2xl font-bold">Editar Meastro</p>
                     <button class="closeModal text-gray-500 hover:text-gray-700">
                         <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M14.348 14.849a1 1 0 0 1-1.415 1.415L10 11.414l-2.931 2.93a1 1 0 1 1-1.415-1.415L8.586 10 5.657 7.071a1 1 0 0 1 1.415-1.415L10 8.586l2.931-2.931a1 1 0 0 1 1.415 1.415L11.414 10l2.934 2.849z" />

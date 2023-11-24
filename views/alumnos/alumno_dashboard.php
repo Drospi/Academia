@@ -15,6 +15,7 @@ if(!isset($_SESSION["rol"])){
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-html5-2.4.2/datatables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
     <link href="/dist/output.css" rel="stylesheet">
@@ -150,6 +151,7 @@ if(!isset($_SESSION["rol"])){
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.8/b-2.4.2/b-html5-2.4.2/datatables.min.js"></script>
     <script src="https://kit.fontawesome.com/ae7acbd10e.js" crossorigin="anonymous"></script>
 </body>
 

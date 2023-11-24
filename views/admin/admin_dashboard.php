@@ -88,7 +88,7 @@ if(!isset($_SESSION["rol"])){
                     <li class="mb-2">
                         <form action="/maestros" method="post">
                         <button onclick="mostrarSeccion('maestros')" class="flex gap-2 items-center" type="submit">
-                        <i class="fas fa-graduation-cap"></i>  Maestros
+                        <i class="fas fa-ruler"></i> Maestros
                         </button>
                         </form>
                     </li>
@@ -102,7 +102,7 @@ if(!isset($_SESSION["rol"])){
                     <li class="mb-2">
                         <form action="/clases" method="post">
                         <button onclick="mostrarSeccion('clases')" class="flex gap-2 items-center">
-                        <i class="fas fa-graduation-cap"></i>  Clases
+                        <i class="fas fa-book"></i> Clases
                         </button>
                         </form>
                     </li>

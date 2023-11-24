@@ -19,6 +19,7 @@
 - El alumno puede ver en la pestaña "Ver Calificaciones" un mensaje dejado por el maestro y la calificación de cada curso.
 - Se uso el plugin de Datatables (https://datatables.net/).
 - Se desarrollo toda la interfaz del usuario (UI) desde cero.
+- Al darse de baja de una materia, se eliminan tambien las calificaciones de esa materia
+- Se puede ordenar por el metodo presionando el campo respectivo de forma ascendente y descendente
+- Se puede seleccionar que columnas ver y que columnas no el el boton de Columnas
 
-
-Si existiesen requerimientos extras que se hayan realizado (de la lista de consideraciones opcionales o de tu propia iniciativa), debes dejar una nota en el archivo README.md de tu repositorio en GitHub que especifique cada una.

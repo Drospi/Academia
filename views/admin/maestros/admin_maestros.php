@@ -35,7 +35,7 @@
         <td class='py-2 px-4 border-b'><?php echo $usuario['adress'] ?></td>
         <td class='py-2 px-4 border-b'><?php echo $usuario['born_date'] ?></td>
         <td class="py-2 px-4 border-b">
-        <button id="maestro<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
+        <button id="maestro<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> Editar</button>
         </td>
     </tr>
 

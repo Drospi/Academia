@@ -41,7 +41,7 @@
                         echo $alumnosInscritos;
                      ?>
                     <td class="py-2 px-4 border-b">
-                        <button id="clase<?php echo $materia['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
+                        <button id="clase<?php echo $materia['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> Editar</button>
                     </td>
                 </tr>
                 <?php } }?>

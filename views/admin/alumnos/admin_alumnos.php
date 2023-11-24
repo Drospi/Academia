@@ -1,6 +1,6 @@
 <h1 class="text-2xl py-4 ml-4">Lista de Alumnos</h1>
 <div class="text-end m-4">
-<button id="createAlumnoButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
+<button id="createAlumnoButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agregar Alumno</button>
 </div>
 <div class="w-auto mx-12">
 <table id="alumnos_table" class="mt-6 w-full border border-gray-300">
@@ -18,9 +18,10 @@
     </thead>
 <tbody>
 
-<?php foreach($usuarios as $usuario){  ?>
+<?php $indexador=1;
+ foreach($usuarios as $usuario){  ?>
     <tr>
-    <td class='py-2 px-4 border-b'><?php echo $usuario['id'] ?></td>
+    <td class='py-2 px-4 border-b'><?php echo $indexador ?></td>
     <td class="py-2 px-4 border-b"><?php echo $usuario['DNI'] ?></td>
     <td class='py-2 px-4 border-b'><?php echo $usuario['name'] ?></td> 
         <td class='py-2 px-4 border-b'><?php echo $usuario['email'] ?></td>
@@ -35,11 +36,11 @@
         <td class='py-2 px-4 border-b'><?php echo $usuario['adress'] ?></td>
         <td class='py-2 px-4 border-b'><?php echo $usuario['born_date'] ?></td>
         <td class="py-2 px-4 border-b">
-        <button id="alumno<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
+        <button id="alumno<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> Editar</button>
         </td>
     </tr>
 
-    <?php }?>
+    <?php $indexador++; }?>
 </tbody>
 </table>
 
@@ -56,24 +57,31 @@
             buttons:[
                 {
                     extend: 'colvis',
-                    text: 'columnas',
+                    footer: true,
+                    text: '<div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-columns"></i> Columnas</div>',
                     titleAttr: 'Columnas visibles',
-                    className: 'bg-gray-300'
+                    className: 'custom-colvis-btn'
                 },
                 {
                     extend: 'excelHtml5',
                     text: 'excel',
                     titleAttr: 'Exportar a excel',
-                    className: 'bg-gray-300'
+                    className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: 'pdf',
                     titleAttr: 'Exportar a pdf',
-                    className: 'bg-gray-300'
+                    className: 'btn btn-success'
                 }
             ]
 
         });
     });
     </script>
+    <style>
+        .custom-colvis-btn{
+            padding: 0;
+            background-color: black;
+        }
+    </style>
