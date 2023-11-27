@@ -19,7 +19,7 @@
                     <div class="mb-4">
                         <label for="email" class="bold text-lg">Nombre de la Materia</label>
                         <div class="flex items-center border border-gray-300 p-2 rounded">
-                            <input type="text" placeholder="Materia" id="name" name="name" class="w-full focus:outline-none">
+                            <input required type="text" placeholder="Materia" id="name" name="name" class="w-full focus:outline-none">
                         </div>
                     </div>
 

@@ -2,7 +2,7 @@
 
 <h1 class="text-2xl py-4 ml-4">Lista de Maestros</h1>
 <div class="text-end m-4">
-<button id="createMaestroButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Abrir Modal</button>
+<button id="createMaestroButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agregar Maestro</button>
 </div>
 <div class="w-auto mx-12">
 <table id="maestros_table" class="mt-6 w-full border border-gray-300">
@@ -51,6 +51,13 @@
         document.addEventListener("DOMContentLoaded", function() {
         let table = new DataTable('#maestros_table',{
             responsive: 'true',
+            columnDefs: [{
+                                targets: [0],
+                                orderable: false,
+                                render: function(data, type, row, meta) {
+                                    return meta.row + 1;
+                                }
+                }],
             dom: 'Bfrtilp',
             buttons:[
                 {

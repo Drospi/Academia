@@ -16,14 +16,14 @@
         <form action="/login" method="post">
             <div class="mb-4">
             <div class="flex bg-white items-center border border-gray-300 p-2 rounded">
-                    <input type="text" placeholder="Correo" id="email" name="email" class="w-full focus:outline-none">
+                    <input required type="text" placeholder="Correo" id="email" name="email" class="w-full focus:outline-none">
                     <i class="fas fa-envelope text-gray-500"></i>
                 </div>
             </div>
             <div class="mb-4">
             <div class="flex bg-white items-center border border-gray-300 p-2 rounded">
-                    <input type="password" placeholder="Contrasena" id="password" name="password" class="w-full focus:outline-none">
-                    <i class="fas fa-lock text-gray-500"></i>
+                    <input required type="password" placeholder="Contrasena" id="password" name="password" class="w-full focus:outline-none">
+    <i id="eyeIcon" class="fa fa-eye-slash text-gray-500 cursor-pointer hover:text-gray-400"></i>
                 </div>
             </div>
             <div class="mb-4">
@@ -32,5 +32,23 @@
         </form>
     </div>
 </div>
+<script>
+    document.getElementById('eyeIcon').addEventListener('click',togglePassword);
+    function togglePassword() {
+  var passwordField = document.getElementById("password");
+  var eyeIcon = document.getElementById("eyeIcon");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+  } else {
+    passwordField.type = "password";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  }
+}
+
+</script>
 </body>
 </html>

@@ -80,6 +80,13 @@
         document.addEventListener("DOMContentLoaded", function() {
         let table = new DataTable('#clases_table',{
             responsive: 'true',
+            columnDefs: [{
+                                targets: [0],
+                                orderable: false,
+                                render: function(data, type, row, meta) {
+                                    return meta.row + 1;
+                                }
+                }],
             dom: 'Bfrtilp',
             buttons:[
                 {

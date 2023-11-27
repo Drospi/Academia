@@ -28,7 +28,7 @@
                     <div class="mb-4">
                         <label for="email" class="bold text-lg">Calificacion</label>
                         <div class="flex items-center border border-gray-300 p-2 rounded">
-                            <input required type="number" placeholder="Sin calificar" id="calificacion" value="<?php echo $cal ?>" name="calificacion" class="w-full focus:outline-none">
+                            <input required type="number" placeholder="Sin calificar" min="1" max="100" step="25" id="calificacion" value="<?php echo $cal ?>" name="calificacion" class="w-full focus:outline-none">
                             <i class="fas fa-envelope text-gray-500"></i>
                         </div>
                     </div>
