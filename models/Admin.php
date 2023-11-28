@@ -98,6 +98,10 @@ class Admin{
             echo "Error: " . $e->getMessage();
         }
     }
+    public function deleteMaestros($data){
+        $id = $data['id'];
+        $this->db->query("DELETE FROM usuarios WHERE id=$id");
+    }
     public function editAlumnos($data){
         $DNI = $data['DNI'];
         $name = $data['name'];
@@ -115,6 +119,10 @@ class Admin{
         $contra = $data['password'];
         $hash = password_hash($contra, PASSWORD_DEFAULT);
         $this->db->query("INSERT INTO usuarios (name,email,adress,born_date,rol,password,DNI) VALUES ('$name','$email','$adress','$born_date',3,'$hash',$DNI)");
+    }
+    public function deleteAlumnos($data){
+        $id = $data['id'];
+        $this->db->query("DELETE FROM usuarios WHERE id=$id");
     }
     public function editClases($data){
         $name = $data['name'];
@@ -144,7 +152,12 @@ class Admin{
         // Manejar el error, registrar o mostrar un mensaje de error
         echo "Error: " . $e->getMessage();
     }
+    
 
+    }
+    public function deleteClases($data){
+        $id = $data['id'];
+        $this->db->query("DELETE FROM materias WHERE id=$id");
     }
     
 }

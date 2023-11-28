@@ -34,8 +34,12 @@
         ?>
         <td class='py-2 px-4 border-b'><?php echo $usuario['adress'] ?></td>
         <td class='py-2 px-4 border-b'><?php echo $usuario['born_date'] ?></td>
-        <td class="py-2 px-4 border-b">
-        <button id="maestro<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> Editar</button>
+        <td class="py-2 px-4 border-b flex gap-2">
+        <form action="/delete/maestros" method="post">
+                            <input type="number" hidden name="id" value="<?php echo $usuario['id'] ?>">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+        <button id="maestro<?php echo $usuario['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> </button>
         </td>
     </tr>
 

@@ -35,6 +35,10 @@ class AdminController{
         $this->model->createMaestros($data);
         header('Location: /admin/maestros');
     }
+    public function deleteMaestros($data){
+        $this->model->deleteMaestros($data);
+        header('Location: /admin/maestros');
+    }
 
     // Pagina alumnos del admin
     public function dashboardAlumnos(){
@@ -50,6 +54,12 @@ class AdminController{
         $this->model->createAlumnos($data);
         header('Location: /admin/alumnos');
     }
+    public function deleteAlumnos($data){
+        $this->model->deleteAlumnos($data);
+        header('Location: /admin/alumnos');
+    }
+
+    //pagina clases del admin
     public function dashboardClases(){
         $nombre= $_GET['name'];
         $materias = $this->model->clases();
@@ -63,6 +73,10 @@ class AdminController{
     }
     public function createClases($data){
         $this->model->createClases($data);
+        header('Location: /admin/clases');
+    }
+    public function deleteClases($data){
+        $this->model->deleteClases($data);
         header('Location: /admin/clases');
     }
     

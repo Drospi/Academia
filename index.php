@@ -40,6 +40,9 @@ if ($method === "POST") {
         case '/maestros/create':
             $adminController->createMaestros($_POST);
             break;
+        case '/delete/maestros':
+            $adminController->deleteMaestros($_POST);
+            break;
         case '/alumnos':
             $adminController->dashboardAlumnos();
             break;
@@ -49,6 +52,9 @@ if ($method === "POST") {
         case '/alumnos/create':
             $adminController->createAlumnos($_POST);
             break;
+        case '/delete/alumnos':
+            $adminController->deleteAlumnos($_POST);
+            break;
         case '/clases':
             $adminController->dashboardClases();
             break;
@@ -57,6 +63,9 @@ if ($method === "POST") {
             break;
         case '/clases/create':
             $adminController->createClases($_POST);
+            break;
+        case '/delete/clases':
+            $adminController->deleteClases($_POST);
             break;
         case '/maestro/alumnos':
             $maestroController->dashboardAlumnos();
