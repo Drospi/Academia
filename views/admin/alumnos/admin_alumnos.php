@@ -48,12 +48,6 @@
 </div>
 <?php include $_SERVER["DOCUMENT_ROOT"] . "/views/admin/alumnos/edit_alumnos.php"; ?>
 <?php include $_SERVER["DOCUMENT_ROOT"] . "/views/admin/alumnos/create_alumnos.php" ?>
-<style>
-    .custom-colvis-btn {
-        padding: 0;
-        background-color: black;
-    }
-</style>
 
 
 <script type="text/javascript">
@@ -73,7 +67,7 @@
                                     footer: true,
                                     text: '<div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-columns"></i> Columnas</div>',
                                     titleAttr: 'Columnas visibles',
-                                    className: 'custom-colvis-btn'
+                                    className: 'btn btn-primary'
                                 },
                                 {
                                     extend: 'excelHtml5',
@@ -97,3 +91,8 @@
                     }).draw();
                 });
 </script>
+<style>
+.dt-button{
+  border: none !important;
+}
+</style>

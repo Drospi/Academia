@@ -14,9 +14,6 @@ class LoginController
     }
     public function index()
     {
-        $contra= 'alumno';
-        $hash = password_hash($contra, PASSWORD_DEFAULT);
-        var_dump($hash);
         include $_SERVER["DOCUMENT_ROOT"] . "/views/login.php";
     }
     public function rol($data)
