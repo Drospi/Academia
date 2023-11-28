@@ -43,9 +43,9 @@
                     <td class="py-2 px-4 border-b flex gap-2">
                     <form action="/delete/clases" method="post">
                             <input type="number" hidden name="id" value="<?php echo $materia['id'] ?>">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-trash-alt"></i>Eliminar</button>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-trash-alt"></i></button>
                         </form>
-                        <button id="clase<?php echo $materia['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> Editar</button>
+                        <button id="clase<?php echo $materia['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i> </button>
                     </td>
                 </tr>
                 <?php } }?>
@@ -70,23 +70,23 @@
                 }],
             dom: 'Bfrtilp',
             buttons: [{
-                    extend: 'colvis',
-                    text: 'columnas',
-                    titleAttr: 'Columnas visibles',
-                    className: 'bg-gray-300'
-                },
-                {
-                    extend: 'excelHtml5',
-                    text: 'excel',
-                    titleAttr: 'Exportar a excel',
-                    className: 'bg-gray-300'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: 'pdf',
-                    titleAttr: 'Exportar a pdf',
-                    className: 'bg-gray-300'
-                }
+                extend: 'colvis',
+                                    footer: true,
+                                    text: '<div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-columns"></i> Columnas</div>',
+                                    titleAttr: 'Columnas visibles',
+                                    className: 'btn btn-primary'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: '<div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-excel"></i> Excel</div>',
+                                    titleAttr: 'Exportar a excel'
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: '<div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-pdf"></i> PDF</div>',
+                                    titleAttr: 'Exportar a pdf',
+                                    className: 'btn btn-success'
+                                }
             ]
 
         });

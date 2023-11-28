@@ -60,7 +60,6 @@
                         responsive: 'true',
                         columnDefs: [{
                                 targets: [0],
-                                orderable: false,
                                 render: function(data, type, row, meta) {
                                     return meta.row + 1;
                                 }
@@ -75,28 +74,18 @@
                                 },
                                 {
                                     extend: 'excelHtml5',
-                                    text: 'excel',
-                                    titleAttr: 'Exportar a excel',
-                                    className: 'btn btn-success'
+                                    text: '<div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-excel"></i> Excel</div>',
+                                    titleAttr: 'Exportar a excel'
                                 },
                                 {
                                     extend: 'pdfHtml5',
-                                    text: 'pdf',
+                                    text: '<div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-pdf"></i> PDF</div>',
                                     titleAttr: 'Exportar a pdf',
                                     className: 'btn btn-success'
                                 }
                             ]
 
-                        }); table.on('order.dt search.dt', function() {
-                        table.rows().every(function(idx) {
-                            var rowData = this.data();
-                            $(rowData[1]).attr('data-index', idx + 1); // Actualiza el atributo data-index
                         });
-                    }).draw();
                 });
 </script>
-<style>
-.dt-button{
-  border: none !important;
-}
-</style>
+

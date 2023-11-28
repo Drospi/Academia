@@ -39,3 +39,14 @@
     animation: salir 1s ease;
     display: none;
 }
+.dt-button{
+    border: none !important;
+    background-color: white !important;
+    padding: 0 !important;
+  }
+  .dt-button-collection{
+      padding: 1rem !important;
+  }
+  .buttons-columnVisibility:hover{
+      background-color: #f3f4f6 !important;
+  }

@@ -66,22 +66,22 @@
             buttons:[
                 {
                     extend: 'colvis',
-                    text: 'columnas',
-                    titleAttr: 'Columnas visibles',
-                    className: 'bg-gray-300'
-                },
-                {
-                    extend: 'excelHtml5',
-                    text: 'excel',
-                    titleAttr: 'Exportar a excel',
-                    className: 'bg-gray-300'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: 'pdf',
-                    titleAttr: 'Exportar a pdf',
-                    className: 'bg-gray-300'
-                }
+                                    footer: true,
+                                    text: '<div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-columns"></i> Columnas</div>',
+                                    titleAttr: 'Columnas visibles',
+                                    className: 'btn btn-primary'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    text: '<div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-excel"></i> Excel</div>',
+                                    titleAttr: 'Exportar a excel'
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    text: '<div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="far fa-file-pdf"></i> PDF</div>',
+                                    titleAttr: 'Exportar a pdf',
+                                    className: 'btn btn-success'
+                                }
             ]
 
         });
